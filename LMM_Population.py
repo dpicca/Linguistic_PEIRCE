@@ -356,10 +356,7 @@ def main():
     
     print(f"\nProcessing complete. Processed {entry_limit} entries out of {len(entries)}.")
     print(f"RDF triples are available in {output_file}")
-    print("\nExample usage of the generated RDF data:")
-    print("1. Load the TTL file into a triple store or RDF database")
-    print("2. Query the data using SPARQL")
-    print("3. Link with other ontologies for enhanced semantic interoperability")
+
 
 if __name__ == "__main__":
     main()
