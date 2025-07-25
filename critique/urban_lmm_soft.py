@@ -53,7 +53,7 @@ class UrbanLMMSoftCritique(CritiqueModel):
             type (str): Type of critique ("hard" or "soft").
         """
         super().__init__(generative_model, prompt_dict, type)
-        
+        """
         # Initialize sub-critique components with fallback mechanisms
         try:
             self.parsimony_critique = ParsimonyCritique()
@@ -78,7 +78,7 @@ class UrbanLMMSoftCritique(CritiqueModel):
             print(f"Warning: Failed to initialize uncertainty critique: {e}")
             self.uncertainty_critique = None
             self.uncertainty_available = False
-        
+        """
         # Initialize spaCy model for additional checks
         try:
             self.nlp = spacy.load("en_core_web_sm")

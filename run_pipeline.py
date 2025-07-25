@@ -97,7 +97,7 @@ Examples:
                         help="Path to a custom factual statements JSON file")
     parser.add_argument("--prompts-file", type=str, default=None,
                         help="Path to a custom creative prompts JSON file")
-    parser.add_argument("--verbose", action="store_true",
+    parser.add_argument("--verbose", action="store_true",default=True,
                         help="Enable verbose output")
     
     return parser.parse_args()
