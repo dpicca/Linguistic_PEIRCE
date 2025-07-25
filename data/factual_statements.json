@@ -1,0 +1,152 @@
+[
+  {
+    "id": "S001",
+    "factual_statement": "Water freezes at 0 degrees Celsius at standard atmospheric pressure.",
+    "topic": "science"
+  },
+  {
+    "id": "S002",
+    "factual_statement": "The human body has 206 bones in an adult skeleton.",
+    "topic": "science"
+  },
+  {
+    "id": "S003",
+    "factual_statement": "Photosynthesis is the process by which plants convert sunlight into energy.",
+    "topic": "science"
+  },
+  {
+    "id": "H001",
+    "factual_statement": "The Declaration of Independence was signed in 1776.",
+    "topic": "history"
+  },
+  {
+    "id": "H002",
+    "factual_statement": "The first moon landing occurred on July 20, 1969.",
+    "topic": "history"
+  },
+  {
+    "id": "H003",
+    "factual_statement": "The printing press was invented by Johannes Gutenberg around 1440.",
+    "topic": "history"
+  },
+  {
+    "id": "G001",
+    "factual_statement": "Mount Everest is the highest mountain on Earth, standing at 8,848.86 meters.",
+    "topic": "geography"
+  },
+  {
+    "id": "G002",
+    "factual_statement": "The Amazon River is the largest river by discharge volume of water in the world.",
+    "topic": "geography"
+  },
+  {
+    "id": "G003",
+    "factual_statement": "The Great Barrier Reef is the world's largest coral reef system.",
+    "topic": "geography"
+  },
+  {
+    "id": "T001",
+    "factual_statement": "The first electronic computer was called ENIAC and was built in 1945.",
+    "topic": "technology"
+  },
+  {
+    "id": "T002",
+    "factual_statement": "The World Wide Web was invented by Tim Berners-Lee in 1989.",
+    "topic": "technology"
+  },
+  {
+    "id": "T003",
+    "factual_statement": "Artificial intelligence refers to the simulation of human intelligence in machines.",
+    "topic": "technology"
+  },
+  {
+    "id": "M001",
+    "factual_statement": "The average adult human heart beats about 72 times per minute.",
+    "topic": "health"
+  },
+  {
+    "id": "M002",
+    "factual_statement": "The human brain contains approximately 86 billion neurons.",
+    "topic": "health"
+  },
+  {
+    "id": "M003",
+    "factual_statement": "Regular physical exercise can reduce the risk of chronic diseases.",
+    "topic": "health"
+  },
+  {
+    "id": "E001",
+    "factual_statement": "Deforestation is a major contributor to climate change and biodiversity loss.",
+    "topic": "environment"
+  },
+  {
+    "id": "E002",
+    "factual_statement": "Renewable energy sources include solar, wind, hydro, and geothermal power.",
+    "topic": "environment"
+  },
+  {
+    "id": "E003",
+    "factual_statement": "Coral reefs are among the most biodiverse ecosystems on the planet.",
+    "topic": "environment"
+  },
+  {
+    "id": "SP001",
+    "factual_statement": "The Sun is a star at the center of our Solar System.",
+    "topic": "space"
+  },
+  {
+    "id": "SP002",
+    "factual_statement": "Jupiter is the largest planet in our Solar System.",
+    "topic": "space"
+  },
+  {
+    "id": "SP003",
+    "factual_statement": "A light-year is the distance light travels in one Earth year, about 9.46 trillion kilometers.",
+    "topic": "space"
+  },
+  {
+    "id": "A001",
+    "factual_statement": "Dolphins use echolocation to navigate and find food in the ocean.",
+    "topic": "animals"
+  },
+  {
+    "id": "A002",
+    "factual_statement": "Bees communicate with each other through a dance known as the waggle dance.",
+    "topic": "animals"
+  },
+  {
+    "id": "A003",
+    "factual_statement": "The blue whale is the largest animal known to have ever existed on Earth.",
+    "topic": "animals"
+  },
+  {
+    "id": "P001",
+    "factual_statement": "Bamboo is one of the fastest-growing plants and can grow up to 91 cm in a single day.",
+    "topic": "plants"
+  },
+  {
+    "id": "P002",
+    "factual_statement": "The oldest living tree is a Great Basin bristlecone pine, which is over 5,000 years old.",
+    "topic": "plants"
+  },
+  {
+    "id": "P003",
+    "factual_statement": "Plants release oxygen into the atmosphere during photosynthesis.",
+    "topic": "plants"
+  },
+  {
+    "id": "MA001",
+    "factual_statement": "Pi is the ratio of a circle's circumference to its diameter, approximately 3.14159.",
+    "topic": "mathematics"
+  },
+  {
+    "id": "MA002",
+    "factual_statement": "The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones.",
+    "topic": "mathematics"
+  },
+  {
+    "id": "MA003",
+    "factual_statement": "A prime number is a natural number greater than 1 that is not divisible by any other number except 1 and itself.",
+    "topic": "mathematics"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "S001_RAP",
+    "factual_statement_id": "S001",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Water freezes at 0 degrees Celsius at standard atmospheric pressure.'",
+    "topic": "science"
+  },
+  {
+    "id": "S001_POEM",
+    "factual_statement_id": "S001",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Water freezes at 0 degrees Celsius at standard atmospheric pressure.'",
+    "topic": "science"
+  },
+  {
+    "id": "H001_RAP",
+    "factual_statement_id": "H001",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The Declaration of Independence was signed in 1776.'",
+    "topic": "history"
+  },
+  {
+    "id": "H001_POEM",
+    "factual_statement_id": "H001",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The Declaration of Independence was signed in 1776.'",
+    "topic": "history"
+  }
+]

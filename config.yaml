@@ -15,3 +15,16 @@ gpt-4o-mini:
 
 huggingface:
   api_key: your_api
+
+# Ollama configuration
+# For more information, see: https://github.com/ollama/ollama
+ollama:
+  # API URL for Ollama (default is localhost)
+  api_url: 'http://localhost:11434'
+  # List of available models
+  # You can add more models by pulling them with: ollama pull <model_name>
+  # For example: ollama pull llama2
+  available_models:
+    - llama3
+    - mistral
+    - gemma

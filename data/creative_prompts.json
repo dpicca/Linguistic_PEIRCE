@@ -1,0 +1,422 @@
+[
+  {
+    "id": "S001_RAP",
+    "factual_statement_id": "S001",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Water freezes at 0 degrees Celsius at standard atmospheric pressure.'",
+    "topic": "science"
+  },
+  {
+    "id": "S001_POEM",
+    "factual_statement_id": "S001",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Water freezes at 0 degrees Celsius at standard atmospheric pressure.'",
+    "topic": "science"
+  },
+  {
+    "id": "S002_RAP",
+    "factual_statement_id": "S002",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The human body has 206 bones in an adult skeleton.'",
+    "topic": "science"
+  },
+  {
+    "id": "S002_POEM",
+    "factual_statement_id": "S002",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The human body has 206 bones in an adult skeleton.'",
+    "topic": "science"
+  },
+  {
+    "id": "S003_RAP",
+    "factual_statement_id": "S003",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Photosynthesis is the process by which plants convert sunlight into energy.'",
+    "topic": "science"
+  },
+  {
+    "id": "S003_POEM",
+    "factual_statement_id": "S003",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Photosynthesis is the process by which plants convert sunlight into energy.'",
+    "topic": "science"
+  },
+  {
+    "id": "H001_RAP",
+    "factual_statement_id": "H001",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The Declaration of Independence was signed in 1776.'",
+    "topic": "history"
+  },
+  {
+    "id": "H001_POEM",
+    "factual_statement_id": "H001",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The Declaration of Independence was signed in 1776.'",
+    "topic": "history"
+  },
+  {
+    "id": "H002_RAP",
+    "factual_statement_id": "H002",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The first moon landing occurred on July 20, 1969.'",
+    "topic": "history"
+  },
+  {
+    "id": "H002_POEM",
+    "factual_statement_id": "H002",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The first moon landing occurred on July 20, 1969.'",
+    "topic": "history"
+  },
+  {
+    "id": "H003_RAP",
+    "factual_statement_id": "H003",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The printing press was invented by Johannes Gutenberg around 1440.'",
+    "topic": "history"
+  },
+  {
+    "id": "H003_POEM",
+    "factual_statement_id": "H003",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The printing press was invented by Johannes Gutenberg around 1440.'",
+    "topic": "history"
+  },
+  {
+    "id": "G001_RAP",
+    "factual_statement_id": "G001",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Mount Everest is the highest mountain on Earth, standing at 8,848.86 meters.'",
+    "topic": "geography"
+  },
+  {
+    "id": "G001_POEM",
+    "factual_statement_id": "G001",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Mount Everest is the highest mountain on Earth, standing at 8,848.86 meters.'",
+    "topic": "geography"
+  },
+  {
+    "id": "G002_RAP",
+    "factual_statement_id": "G002",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The Amazon River is the largest river by discharge volume of water in the world.'",
+    "topic": "geography"
+  },
+  {
+    "id": "G002_POEM",
+    "factual_statement_id": "G002",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The Amazon River is the largest river by discharge volume of water in the world.'",
+    "topic": "geography"
+  },
+  {
+    "id": "G003_RAP",
+    "factual_statement_id": "G003",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The Great Barrier Reef is the world's largest coral reef system.'",
+    "topic": "geography"
+  },
+  {
+    "id": "G003_POEM",
+    "factual_statement_id": "G003",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The Great Barrier Reef is the world's largest coral reef system.'",
+    "topic": "geography"
+  },
+  {
+    "id": "T001_RAP",
+    "factual_statement_id": "T001",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The first electronic computer was called ENIAC and was built in 1945.'",
+    "topic": "technology"
+  },
+  {
+    "id": "T001_POEM",
+    "factual_statement_id": "T001",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The first electronic computer was called ENIAC and was built in 1945.'",
+    "topic": "technology"
+  },
+  {
+    "id": "T002_RAP",
+    "factual_statement_id": "T002",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The World Wide Web was invented by Tim Berners-Lee in 1989.'",
+    "topic": "technology"
+  },
+  {
+    "id": "T002_POEM",
+    "factual_statement_id": "T002",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The World Wide Web was invented by Tim Berners-Lee in 1989.'",
+    "topic": "technology"
+  },
+  {
+    "id": "T003_RAP",
+    "factual_statement_id": "T003",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Artificial intelligence refers to the simulation of human intelligence in machines.'",
+    "topic": "technology"
+  },
+  {
+    "id": "T003_POEM",
+    "factual_statement_id": "T003",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Artificial intelligence refers to the simulation of human intelligence in machines.'",
+    "topic": "technology"
+  },
+  {
+    "id": "M001_RAP",
+    "factual_statement_id": "M001",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The average adult human heart beats about 72 times per minute.'",
+    "topic": "health"
+  },
+  {
+    "id": "M001_POEM",
+    "factual_statement_id": "M001",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The average adult human heart beats about 72 times per minute.'",
+    "topic": "health"
+  },
+  {
+    "id": "M002_RAP",
+    "factual_statement_id": "M002",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The human brain contains approximately 86 billion neurons.'",
+    "topic": "health"
+  },
+  {
+    "id": "M002_POEM",
+    "factual_statement_id": "M002",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The human brain contains approximately 86 billion neurons.'",
+    "topic": "health"
+  },
+  {
+    "id": "M003_RAP",
+    "factual_statement_id": "M003",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Regular physical exercise can reduce the risk of chronic diseases.'",
+    "topic": "health"
+  },
+  {
+    "id": "M003_POEM",
+    "factual_statement_id": "M003",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Regular physical exercise can reduce the risk of chronic diseases.'",
+    "topic": "health"
+  },
+  {
+    "id": "E001_RAP",
+    "factual_statement_id": "E001",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Deforestation is a major contributor to climate change and biodiversity loss.'",
+    "topic": "environment"
+  },
+  {
+    "id": "E001_POEM",
+    "factual_statement_id": "E001",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Deforestation is a major contributor to climate change and biodiversity loss.'",
+    "topic": "environment"
+  },
+  {
+    "id": "E002_RAP",
+    "factual_statement_id": "E002",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Renewable energy sources include solar, wind, hydro, and geothermal power.'",
+    "topic": "environment"
+  },
+  {
+    "id": "E002_POEM",
+    "factual_statement_id": "E002",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Renewable energy sources include solar, wind, hydro, and geothermal power.'",
+    "topic": "environment"
+  },
+  {
+    "id": "E003_RAP",
+    "factual_statement_id": "E003",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Coral reefs are among the most biodiverse ecosystems on the planet.'",
+    "topic": "environment"
+  },
+  {
+    "id": "E003_POEM",
+    "factual_statement_id": "E003",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Coral reefs are among the most biodiverse ecosystems on the planet.'",
+    "topic": "environment"
+  },
+  {
+    "id": "SP001_RAP",
+    "factual_statement_id": "SP001",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The Sun is a star at the center of our Solar System.'",
+    "topic": "space"
+  },
+  {
+    "id": "SP001_POEM",
+    "factual_statement_id": "SP001",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The Sun is a star at the center of our Solar System.'",
+    "topic": "space"
+  },
+  {
+    "id": "SP002_RAP",
+    "factual_statement_id": "SP002",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Jupiter is the largest planet in our Solar System.'",
+    "topic": "space"
+  },
+  {
+    "id": "SP002_POEM",
+    "factual_statement_id": "SP002",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Jupiter is the largest planet in our Solar System.'",
+    "topic": "space"
+  },
+  {
+    "id": "SP003_RAP",
+    "factual_statement_id": "SP003",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'A light-year is the distance light travels in one Earth year, about 9.46 trillion kilometers.'",
+    "topic": "space"
+  },
+  {
+    "id": "SP003_POEM",
+    "factual_statement_id": "SP003",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'A light-year is the distance light travels in one Earth year, about 9.46 trillion kilometers.'",
+    "topic": "space"
+  },
+  {
+    "id": "A001_RAP",
+    "factual_statement_id": "A001",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Dolphins use echolocation to navigate and find food in the ocean.'",
+    "topic": "animals"
+  },
+  {
+    "id": "A001_POEM",
+    "factual_statement_id": "A001",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Dolphins use echolocation to navigate and find food in the ocean.'",
+    "topic": "animals"
+  },
+  {
+    "id": "A002_RAP",
+    "factual_statement_id": "A002",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Bees communicate with each other through a dance known as the waggle dance.'",
+    "topic": "animals"
+  },
+  {
+    "id": "A002_POEM",
+    "factual_statement_id": "A002",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Bees communicate with each other through a dance known as the waggle dance.'",
+    "topic": "animals"
+  },
+  {
+    "id": "A003_RAP",
+    "factual_statement_id": "A003",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The blue whale is the largest animal known to have ever existed on Earth.'",
+    "topic": "animals"
+  },
+  {
+    "id": "A003_POEM",
+    "factual_statement_id": "A003",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The blue whale is the largest animal known to have ever existed on Earth.'",
+    "topic": "animals"
+  },
+  {
+    "id": "P001_RAP",
+    "factual_statement_id": "P001",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Bamboo is one of the fastest-growing plants and can grow up to 91 cm in a single day.'",
+    "topic": "plants"
+  },
+  {
+    "id": "P001_POEM",
+    "factual_statement_id": "P001",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Bamboo is one of the fastest-growing plants and can grow up to 91 cm in a single day.'",
+    "topic": "plants"
+  },
+  {
+    "id": "P002_RAP",
+    "factual_statement_id": "P002",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The oldest living tree is a Great Basin bristlecone pine, which is over 5,000 years old.'",
+    "topic": "plants"
+  },
+  {
+    "id": "P002_POEM",
+    "factual_statement_id": "P002",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The oldest living tree is a Great Basin bristlecone pine, which is over 5,000 years old.'",
+    "topic": "plants"
+  },
+  {
+    "id": "P003_RAP",
+    "factual_statement_id": "P003",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Plants release oxygen into the atmosphere during photosynthesis.'",
+    "topic": "plants"
+  },
+  {
+    "id": "P003_POEM",
+    "factual_statement_id": "P003",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Plants release oxygen into the atmosphere during photosynthesis.'",
+    "topic": "plants"
+  },
+  {
+    "id": "MA001_RAP",
+    "factual_statement_id": "MA001",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Pi is the ratio of a circle's circumference to its diameter, approximately 3.14159.'",
+    "topic": "mathematics"
+  },
+  {
+    "id": "MA001_POEM",
+    "factual_statement_id": "MA001",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'Pi is the ratio of a circle's circumference to its diameter, approximately 3.14159.'",
+    "topic": "mathematics"
+  },
+  {
+    "id": "MA002_RAP",
+    "factual_statement_id": "MA002",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones.'",
+    "topic": "mathematics"
+  },
+  {
+    "id": "MA002_POEM",
+    "factual_statement_id": "MA002",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones.'",
+    "topic": "mathematics"
+  },
+  {
+    "id": "MA003_RAP",
+    "factual_statement_id": "MA003",
+    "prompt_type": "rap",
+    "prompt": "Rewrite this fact as a rap using urban slang and hip-hop terminology: 'A prime number is a natural number greater than 1 that is not divisible by any other number except 1 and itself.'",
+    "topic": "mathematics"
+  },
+  {
+    "id": "MA003_POEM",
+    "factual_statement_id": "MA003",
+    "prompt_type": "urban_poem",
+    "prompt": "Rewrite this fact as a short urban poem using street language and cultural references: 'A prime number is a natural number greater than 1 that is not divisible by any other number except 1 and itself.'",
+    "topic": "mathematics"
+  }
+]
