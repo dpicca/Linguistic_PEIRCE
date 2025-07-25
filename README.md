@@ -1,113 +1,91 @@
-# PEIRCE: Unifying Material and Formal Reasoning via LLM-Driven Neuro-Symbolic Refinement
+# PEIRCE + LMM Pipeline Tests
 
-A persistent challenge in AI is the effective integration of material and formal inference - the former concerning the plausibility and contextual relevance of arguments, while the latter focusing on their logical and structural validity. Large Language Models (LLMs), by virtue of their extensive pre-training on large textual corpora, exhibit strong capabilities in material inference. However, their reasoning often lacks formal rigour and verifiability. At the same time, LLMs’ linguistic competence positions them as a promising bridge between natural and formal languages, opening up new opportunities for combining these two modes of reasoning. We introduce PEIRCE, a neuro-symbolic framework designed to unify material and formal inference through an iterative conjecture–criticism process. Within this framework, LLMs play the central role of generating candidate solutions in natural and formal languages, which are then evaluated and refined via interaction with external critique models. These critiques include symbolic provers, which assess formal validity, as well as soft evaluators that measure the quality of the generated arguments along linguistic and epistemic dimensions such as plausibility, coherence, and parsimony. While PEIRCE is a general-purpose framework, we demonstrate its capabilities in the domain of natural language explanation generation - a setting that inherently demands both material adequacy and formal correctness
+This folder contains tests for the PEIRCE + LMM pipeline. The tests verify that the pipeline works correctly with different configurations and inputs.
 
+## Test Files
 
-Demo paper: https://arxiv.org/abs/2504.04110 
+- `test_model_factory.py`: Tests the model_factory module to ensure it correctly handles different model configurations.
+- `test_pipeline.py`: Tests the basic functionality of the pipeline without running the full pipeline.
+- `test_pipeline_e2e.py`: End-to-end test that runs the pipeline with a small sample to verify that it works correctly.
 
-High-level overview of the framework:
+## Running the Tests
 
-
-![Image description](framework.png)
-
-## Demonstrations
-
-To get you familiar with PEIRCE, we released a set of demonstrations showcasing the applicability of the framework to different NLI tasks and domains:
-
-- Refinement with hard and soft critiques, [link](https://github.com/neuro-symbolic-ai/peirce/blob/main/Soft%20and%20Hard%20Critiques.ipynb)
-- LLMs-Symbolic Explanation Refinement (with hard Isabelle critique), [link](https://github.com/neuro-symbolic-ai/peirce/blob/main/Neuro-Symbolic%20Explanation%20Refinement.ipynb)
-- Inference to the Best Explanation in Large Language Models (with soft critiques), [link](https://github.com/neuro-symbolic-ai/peirce/blob/main/Inference%20to%20the%20Best%20Explanation.ipynb)
-- Hybrid Inductive Logic Programming (with hard Prolog critique), [link](https://github.com/neuro-symbolic-ai/peirce/blob/main/Hybrid%20Inductive%20Logic%20Programming.ipynb)
-- Explanation Retrieval and Explanatory Unification Patterns, [link](https://github.com/neuro-symbolic-ai/peirce/blob/main/Explanation%20Retrieval.ipynb).
-
-## Install Dependencies
-
-### Python Libraries
-
-To install all the required Python libraries for running PEIRCE, clone the repository locally and execute the following command:
+You can run the tests using the Python unittest framework:
 
 ```bash
-pip install -r requirements.txt
+# Run all tests
+python -m unittest discover -s test
+
+# Run a specific test file
+python -m unittest test.test_model_factory
+python -m unittest test.test_pipeline
+python -m unittest test.test_pipeline_e2e
+
+# Run a specific test case
+python -m unittest test.test_model_factory.TestModelFactory.test_load_config
 ```
 
-### Data Model
+## Test Requirements
 
-To integrate different explanation-centred NLI datasets with PEIRCE, we implemented a separate Python package called SSKB: `pip install sskb`
+The tests require the following:
 
+- Python 3.6+
+- The same dependencies as the main pipeline (see the project's requirements.txt)
+- For the end-to-end test, you need a working Ollama installation with the llama3 model pulled
 
-### Critique Models
+## Test Environment
 
-To use the soft critique models, first install spaCy’s English model by running:
+The tests are designed to work in a test environment without proper credentials. If the pipeline fails due to missing models or API keys, that's expected in a test environment and the tests will handle it gracefully.
 
-```bash
-python -m spacy download en_core_web_sm
-```
+## Test Coverage
 
-Some critique models use external solvers that need a separate installation. To install prolog solver, please follow the instructions below.
+The tests cover the following aspects of the pipeline:
 
-#### Prolog Solver Installation:
+### Model Factory Tests
 
-```bash
-sudo add-apt-repository ppa:swi-prolog/stable
-sudo apt-get update
-sudo apt-get install swi-prolog
-pip install -U pyswip
-```
+- Loading the configuration
+- Creating an Ollama instance with a valid model
+- Creating an Ollama instance with an invalid model (should raise an error)
+- Creating a GPT instance with a valid model
+- Creating a GPT instance with an invalid model (should raise an error)
+- Creating an instance with an invalid provider (should raise an error)
 
-To install Isabelle, please follow the instructions below.
+### Pipeline Tests
 
-#### Isabelle Linux Installation:
+- Generating creative prompts
+- Loading factual statements
+- Pipeline initialization with different configurations
+- Saving pipeline results
 
-Download Isabelle2023 in your working directory (e.g., Desktop):
+### End-to-End Tests
 
-```bash
-wget https://isabelle.in.tum.de/website-Isabelle2023/dist/Isabelle2023_linux.tar.gz
-tar -xzf Isabelle2023_linux.tar.gz --no-same-owner
-```
+- Running the pipeline with a small sample
+- Verifying that the results contain the expected keys
+- Verifying that the output files are created
 
-Append Isabelle2023's bin directory to your PATH
-```bash
-export PATH=$PATH:/workspace/Isabelle2023/bin 
-```
+## Adding New Tests
 
-#### Isabelle macOS Installation:
+To add a new test, create a new test file in this folder and follow the unittest framework conventions. Make sure to import the necessary modules and add the project root to the Python path:
 
-Download Isabelle2023/2024 for macOS from the official website: https://isabelle.in.tum.de/
-
-Append Isabelle2023's bin directory to your PATH
-```bash
-export PATH=$PATH:/Users/user/Desktop/Isabelle2023.app/bin
-```
-#### Isabelle python notebook:
-
-When using isabelle-client inside Jupyter, both Jupyter and isabelle-client rely on asyncio, requiring nested event loops to be enabled. This step is not necessary when running isabelle-client from standalone Python scripts outside of Jupyter.
-
-```
-import nest_asyncio
-nest_asyncio.apply()
+```python
 import os
-original_path = os.environ.get('PATH', '')
-new_path = original_path + ':/workspace/Isabelle2023/bin'
-os.environ['PATH'] = new_path
-print(os.environ['PATH'])
+import sys
+import unittest
+from pathlib import Path
+
+# Add the project root to the Python path
+project_root = Path(__file__).parent.parent
+sys.path.append(str(project_root))
+
+# Import the modules to test
+from module.to.test import ClassToTest
+
+class TestNewFeature(unittest.TestCase):
+    def test_something(self):
+        # Test code here
+        pass
 ```
 
-#### API Keys
-Set your `api_key` in the `config.yaml` file to use the generative models.
+## Test Data
 
-## Reference
-
-If you find this repository useful, please consider citing our demo paper. 
-
-```
-@misc{quan2025peirceunifyingmaterialformal,
-      title={PEIRCE: Unifying Material and Formal Reasoning via LLM-Driven Neuro-Symbolic Refinement}, 
-      author={Xin Quan and Marco Valentino and Danilo S. Carvalho and Dhairya Dalal and André Freitas},
-      year={2025},
-      eprint={2504.04110},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2504.04110}, 
-}
-```
-
+The tests use sample data created within the test files. If you need to add more test data, you can create it in the setUp method of your test case or add it to the test/data folder.
