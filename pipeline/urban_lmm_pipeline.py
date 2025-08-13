@@ -35,7 +35,7 @@ class UrbanLMMPipeline:
     This class integrates all components of the PEIRCE + LMM project into a complete pipeline.
     """
     
-    def __init__(self, model_name: str = "llama3", provider: Optional[str] = 'ollama',
+    def __init__(self, model_name: str = "gpt-oss", provider: Optional[str] = 'ollama',
                  max_iterations: int = 3, min_urban_terms: int = 2,
                  output_dir: Optional[str] = None):
         """
@@ -280,7 +280,7 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description="Run the PEIRCE + LMM pipeline.")
-    parser.add_argument("--model", type=str, default="llama3", help="Name of the LLM model to use.")
+    parser.add_argument("--model", type=str, default="gpt-oss", help="Name of the LLM model to use.")
     parser.add_argument("--provider", type=str, default='ollama', help="Provider of the LLM model.")
     parser.add_argument("--max-iterations", type=int, default=3, help="Maximum number of refinement iterations.")
     parser.add_argument("--min-urban-terms", type=int, default=2, help="Minimum number of urban terms required.")

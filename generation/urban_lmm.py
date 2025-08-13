@@ -23,7 +23,7 @@ class UrbanLMMGenerator(GenerativeModel):
     Generator for creative outputs using urban dictionary concepts.
     """
     
-    def __init__(self, model_name="gpt-4o", urban_dict_path=None, num_samples=1, provider=None):
+    def __init__(self, model_name="gpt-oss", urban_dict_path=None, num_samples=1, provider='ollama'):
         """
         Initialize the generator.
         

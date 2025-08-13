@@ -22,7 +22,7 @@ class UrbanLMMRefinement:
     Iterative refinement mechanism for the PEIRCE + LMM pipeline.
     """
     
-    def __init__(self, model_name="gpt-4o", max_iterations=3, provider=None):
+    def __init__(self, model_name="gpt-oss", max_iterations=3, provider='ollama'):
         """
         Initialize the refinement mechanism.
         

@@ -9,6 +9,7 @@ This module implements the complete pipeline for the PEIRCE + LMM project, integ
 - [Pipeline Architecture](#pipeline-architecture)
 - [Installation and Setup](#installation-and-setup)
 - [Usage](#usage)
+- [Common Tasks](#common-tasks)
 - [Configuration Options](#configuration-options)
 - [Output Format](#output-format)
 - [Components in Detail](#components-in-detail)
@@ -159,13 +160,13 @@ The pipeline integrates several components that work together to transform factu
 ```python
 from pipeline.urban_lmm_pipeline import UrbanLMMPipeline
 
-# Initialize the pipeline
+# Initialize the pipeline (defaults to Ollama gpt-oss)
 pipeline = UrbanLMMPipeline(
-    model_name="llama3",       # Specify the model to use
-    provider="ollama",         # Specify the provider
-    max_iterations=3,          # Maximum number of refinement iterations
-    min_urban_terms=2,         # Minimum number of urban terms required
-    output_dir=None            # Use default output directory
+    model_name="gpt-oss",
+    provider="ollama",
+    max_iterations=3,
+    min_urban_terms=2,
+    output_dir=None
 )
 
 # Run the pipeline with default settings (processes first 3 factual statements)
@@ -181,11 +182,19 @@ You can also run the pipeline from the command line:
 python run_pipeline.py
 
 # Run with custom settings
-python run_pipeline.py --model gpt-4o --provider openai --max-iterations 5 --min-urban-terms 3 --num-samples 10
+python run_pipeline.py --model gpt-oss --provider ollama --max-iterations 5 --min-urban-terms 3 --num-samples 10
 
 # Get help
 python run_pipeline.py --help
 ```
+
+## Common Tasks
+
+- Run unit tests: `python -m unittest discover -s test`
+- Quick local run (no API keys, Ollama): `python run_pipeline.py --model gpt-oss --provider ollama --num-samples 2`
+- Use OpenAI (requires keys in `config.yaml`): `python run_pipeline.py --model gpt-4o --provider openai`
+- Generate prompts only (programmatic): use `UrbanLMMPipeline.generate_creative_prompts(statements)`
+- Outputs location: `data/pipeline_outputs/` (timestamped JSON files)
 
 ### Custom Factual Statements and Prompts
 

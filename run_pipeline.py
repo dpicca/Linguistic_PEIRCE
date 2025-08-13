@@ -9,7 +9,7 @@ Usage:
     python run_pipeline.py [options]
 
 Options:
-    --model MODEL         Name of the LLM model to use (default: llama3)
+    --model MODEL         Name of the LLM model to use (default: gpt-oss)
     --provider PROVIDER   Provider of the LLM model (default: ollama)
     --max-iterations N    Maximum number of refinement iterations (default: 3)
     --min-urban-terms N   Minimum number of urban terms required (default: 2)
@@ -81,8 +81,8 @@ Examples:
         """
     )
     
-    parser.add_argument("--model", type=str, default="llama3",
-                        help="Name of the LLM model to use (default: llama3)")
+    parser.add_argument("--model", type=str, default="gpt-oss",
+                        help="Name of the LLM model to use (default: gpt-oss)")
     parser.add_argument("--provider", type=str, default="ollama",
                         help="Provider of the LLM model (default: ollama)")
     parser.add_argument("--max-iterations", type=int, default=3,
