@@ -84,14 +84,11 @@ class UrbanLMMHardCritique(CritiqueModel):
                         "definition": sense_dict[expr_id]
                     })
             
-            # If no terms were extracted, use a fallback list
+            # If no terms were extracted, raise an error
             if not urban_terms:
-                urban_terms = self._get_fallback_urban_terms()
-                
+                raise ValueError(f"No urban terms extracted from ontology at {urban_dict_path}")
         except Exception as e:
-            print(f"Error loading urban dictionary terms: {e}")
-            urban_terms = self._get_fallback_urban_terms()
-            
+            raise RuntimeError(f"Error loading urban dictionary terms from {urban_dict_path}: {e}") from e
         return urban_terms
     
     def _get_fallback_urban_terms(self):

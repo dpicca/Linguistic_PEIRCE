@@ -53,40 +53,16 @@ class UrbanLMMSoftCritique(CritiqueModel):
             type (str): Type of critique ("hard" or "soft").
         """
         super().__init__(generative_model, prompt_dict, type)
-        """
-        # Initialize sub-critique components with fallback mechanisms
-        try:
-            self.parsimony_critique = ParsimonyCritique()
-            self.parsimony_available = True
-        except Exception as e:
-            print(f"Warning: Failed to initialize parsimony critique: {e}")
-            self.parsimony_critique = None
-            self.parsimony_available = False
-            
-        try:
-            self.coherence_critique = CoherenceCritique()
-            self.coherence_available = True
-        except Exception as e:
-            print(f"Warning: Failed to initialize coherence critique: {e}")
-            self.coherence_critique = None
-            self.coherence_available = False
-            
-        try:
-            self.uncertainty_critique = UncertaintyCritique()
-            self.uncertainty_available = True
-        except Exception as e:
-            print(f"Warning: Failed to initialize uncertainty critique: {e}")
-            self.uncertainty_critique = None
-            self.uncertainty_available = False
-        """
+        # Initialize sub-critique components (no fallbacks)
+        self.parsimony_critique = ParsimonyCritique()
+        self.parsimony_available = True
+        self.coherence_critique = CoherenceCritique()
+        self.coherence_available = True
+        self.uncertainty_critique = UncertaintyCritique()
+        self.uncertainty_available = True
         # Initialize spaCy model for additional checks
-        try:
-            self.nlp = spacy.load("en_core_web_sm")
-            self.spacy_available = True
-        except Exception as e:
-            print(f"Warning: Failed to load spaCy model: {e}")
-            self.nlp = None
-            self.spacy_available = False
+        self.nlp = spacy.load("en_core_web_sm")
+        self.spacy_available = True
         
         # Set thresholds
         self.parsimony_threshold = parsimony_threshold
@@ -120,14 +96,11 @@ class UrbanLMMSoftCritique(CritiqueModel):
             for _, form in expressions:
                 urban_terms.append(form.lower())
                 
-            # If no terms were extracted, use a fallback list
+            # If no terms were extracted, raise
             if not urban_terms:
-                urban_terms = self._get_fallback_urban_terms()
-                
+                raise ValueError(f"No urban terms extracted from ontology at {urban_dict_path}")
         except Exception as e:
-            print(f"Error loading urban dictionary terms: {e}")
-            urban_terms = self._get_fallback_urban_terms()
-            
+            raise RuntimeError(f"Error loading urban dictionary terms from {urban_dict_path}: {e}") from e
         return urban_terms
     
     def _get_fallback_urban_terms(self):

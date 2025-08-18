@@ -39,3 +39,28 @@ mkdocs build -f PeirceDoc/mkdocs.yml
 ::: factual_statements
 
 ::: run_pipeline
+
+
+---
+
+# Additional API Modules
+
+The sections below reflect recent code updates and include modules not previously listed.
+
+## Generation
+
+::: generation.urban_lmm
+
+::: generation.model_factory
+
+::: generation.ollama
+
+## Critique
+
+::: critique.urban_lmm_hard_critique
+
+::: critique.urban_lmm_soft
+
+## Refinement
+
+::: refinement.urban_lmm_refinement

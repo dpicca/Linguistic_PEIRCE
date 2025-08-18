@@ -6,7 +6,31 @@ theme: readthedocs
 
 nav:
   - Home: index.md
-  - API Reference: api.md
+  - API:
+      - pipeline:
+          - urban_lmm_pipeline: api/pipeline/urban_lmm_pipeline.md
+      - critique:
+          - abstract: api/critique/abstract.md
+          - parsimony: api/critique/parsimony.md
+          - coherence: api/critique/coherence.md
+          - uncertainty: api/critique/uncertainty.md
+          - urban_lmm_hard_critique: api/critique/urban_lmm_hard_critique.md
+          - urban_lmm_soft: api/critique/urban_lmm_soft.md
+      - generation:
+          - abstract: api/generation/abstract.md
+          - gpt: api/generation/gpt.md
+          - urban_lmm: api/generation/urban_lmm.md
+          - model_factory: api/generation/model_factory.md
+          - ollama: api/generation/ollama.md
+      - prompt:
+          - prompt_model: api/prompt/prompt_model.md
+      - refinement:
+          - urban_lmm_refinement: api/refinement/urban_lmm_refinement.md
+      - scripts:
+          - creative_prompts: api/creative_prompts.md
+          - factual_statements: api/factual_statements.md
+          - run_pipeline: api/run_pipeline.md
+      - API Overview: api.md
 
 plugins:
   - search

@@ -116,13 +116,10 @@ def load_custom_file(file_path, file_type):
     try:
         with open(file_path, 'r') as f:
             data = json.load(f)
-        
         print(f"Loaded custom {file_type} from {file_path}")
         return data
     except Exception as e:
-        print(f"Error loading {file_type} from {file_path}: {e}")
-        print(f"Using default {file_type} instead.")
-        return None
+        raise FileNotFoundError(f"Failed to load {file_type} from {file_path}: {e}")
 
 def print_progress(message, verbose=False):
     """

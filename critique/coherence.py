@@ -168,14 +168,15 @@ class CoherenceCritique(CritiqueModel):
         for step in steps[:-1]:
             try:
                 pe = step.split("THEN")
+                if len(pe) < 2:
+                    raise ValueError(f"Malformed step, expected 'IF ... THEN ...' structure: {step}")
                 p = f'{pe[0].strip("IF").strip()[:-1]}.'
                 e = pe[1]
-                score = self.get_entailment_scores(p,e)
-                
-                for k,v in score.items():
+                score = self.get_entailment_scores(p, e)
+                for k, v in score.items():
                     scores[k].append(v)
-            except: 
-                pass
+            except Exception as exc:
+                raise ValueError(f"Failed to compute entailment for step: {step}") from exc
         scores = {k: np.mean(v) for k,v in scores.items()}
         return scores
 

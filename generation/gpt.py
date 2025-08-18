@@ -64,8 +64,8 @@ class GPT(GenerativeModel):
                 ]
             )
         except Exception as e:
-            print(f'Error: {e}')
-            return
+            # Propagate exceptions to the caller instead of silently returning
+            raise
         result = response.choices[0].message.content
         if test:
             print(result)
