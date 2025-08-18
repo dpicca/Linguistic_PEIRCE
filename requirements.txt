@@ -13,3 +13,10 @@ certainty-estimator
 sentence_transformers
 sympy
 accelerate
+transformers
+torch
+
+# Documentation
+mkdocs>=1.5
+mkdocstrings>=0.24
+mkdocstrings-python>=1.10

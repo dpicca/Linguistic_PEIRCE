@@ -1,0 +1,2883 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="PEIRCE Team" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>API Reference - PEIRCE + LMM</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API Reference";
+        var mkdocs_page_input_path = "api.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> PEIRCE + LMM
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">API Reference</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pipeline">Pipeline</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline">UrbanLMMPipeline</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline.__init__">__init__</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline.generate_creative_prompts">generate_creative_prompts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline.load_creative_prompts">load_creative_prompts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline.load_factual_statements">load_factual_statements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline.run_pipeline">run_pipeline</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline.save_pipeline_results">save_pipeline_results</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pipeline.urban_lmm_pipeline.main">main</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#critique">Critique</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#critique.abstract.CritiqueModel">CritiqueModel</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.abstract.CritiqueModel.critique">critique</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.abstract.CritiqueModel.shutdown">shutdown</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#critique.parsimony.ParsimonyCritique">ParsimonyCritique</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.parsimony.ParsimonyCritique.critique">critique</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.parsimony.ParsimonyCritique.extract_unique_concepts">extract_unique_concepts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.parsimony.ParsimonyCritique.parse_explanation">parse_explanation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.parsimony.ParsimonyCritique.shutdown">shutdown</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#critique.coherence.CoherenceCritique">CoherenceCritique</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.coherence.CoherenceCritique.__init__">__init__</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.coherence.CoherenceCritique.critique">critique</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.coherence.CoherenceCritique.get_entailment_scores">get_entailment_scores</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.coherence.CoherenceCritique.internal_entailment">internal_entailment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.coherence.CoherenceCritique.parse_explanation">parse_explanation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.coherence.CoherenceCritique.shutdown">shutdown</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#critique.uncertainty.UncertaintyCritique">UncertaintyCritique</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.uncertainty.UncertaintyCritique.__init__">__init__</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.uncertainty.UncertaintyCritique.calculate_avg_uncertainity">calculate_avg_uncertainity</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.uncertainty.UncertaintyCritique.parse_explanation">parse_explanation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critique.uncertainty.UncertaintyCritique.shutdown">shutdown</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#generation">Generation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#generation.abstract.GenerativeModel">GenerativeModel</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#generation.abstract.GenerativeModel.extract_numbered_list">extract_numbered_list</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#generation.gpt.GPT">GPT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#generation.gpt.GPT.generate">generate</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prompt">Prompt</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#utilities-and-scripts">Utilities and Scripts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creative_prompts.generate_creative_prompts">generate_creative_prompts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creative_prompts.save_to_csv">save_to_csv</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creative_prompts.save_to_json">save_to_json</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#factual_statements.save_to_csv">save_to_csv</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#factual_statements.save_to_json">save_to_json</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run_pipeline--run-with-default-settings-processes-first-3-factual-statements">Run with default settings (processes first 3 factual statements)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run_pipeline--run-with-custom-model-and-provider">Run with custom model and provider</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run_pipeline--process-more-samples">Process more samples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run_pipeline--use-custom-input-files">Use custom input files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run_pipeline--enable-verbose-output">Enable verbose output</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run_pipeline.load_custom_file">load_custom_file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run_pipeline.main">main</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run_pipeline.parse_arguments">parse_arguments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run_pipeline.print_progress">print_progress</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run_pipeline.run_pipeline_with_progress">run_pipeline_with_progress</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">PEIRCE + LMM</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h1>
+<p>This section is automatically generated from docstrings using mkdocstrings.</p>
+<p>Note: To build these pages locally, install the docs dependencies listed in requirements.txt and run:</p>
+<pre><code>mkdocs build -f PeirceDoc/mkdocs.yml
+</code></pre>
+<h2 id="pipeline">Pipeline<a class="headerlink" href="#pipeline" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+        <p>Pipeline runner for the PEIRCE + LMM project.</p>
+<p>This module implements the complete pipeline for the PEIRCE + LMM project, including:
+1. Input: factual statement (id, text, topic)
+2. Prompt: generated rap / urban poem prompt, linked to the id
+3. Generation: LLM produces creative version (with access to the knowledge base)
+4. Hard Critique: mapping of terms and checking semantic fidelity
+5. Soft Critique: calculating parsimony, coherence, uncertainty, etc.
+6. Feedback &amp; Refinement: iterative improvement until thresholds are met
+7. Output: final creative version with scores, logs, and mappings</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="pipeline.urban_lmm_pipeline.UrbanLMMPipeline" class="doc doc-heading">
+            <code>UrbanLMMPipeline</code>
+
+
+<a href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+
+        <p>Pipeline runner for the PEIRCE + LMM project.</p>
+<p>This class integrates all components of the PEIRCE + LMM project into a complete pipeline.</p>
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="pipeline.urban_lmm_pipeline.UrbanLMMPipeline.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;gpt-oss&#39;</span><span class="p">,</span> <span class="n">provider</span><span class="o">=</span><span class="s1">&#39;ollama&#39;</span><span class="p">,</span> <span class="n">max_iterations</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">min_urban_terms</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline.__init__" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize the pipeline runner.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>model_name</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>&#39;gpt-oss&#39;</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Name of the LLM model to use.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>provider</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>&#39;ollama&#39;</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Provider of the LLM model (e.g., 'openai', 'ollama').</p>
+              </div>
+            </li>
+            <li>
+              <b><code>max_iterations</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>3</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of refinement iterations.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>min_urban_terms</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>2</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Minimum number of urban terms required in the output.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>output_dir</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Directory to save the outputs.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="pipeline.urban_lmm_pipeline.UrbanLMMPipeline.generate_creative_prompts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">generate_creative_prompts</span><span class="p">(</span><span class="n">factual_statements</span><span class="p">)</span></code>
+
+<a href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline.generate_creative_prompts" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Generate creative prompts for factual statements.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>factual_statements</code></b>
+                  (<code><span title="list">list</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>List of factual statements.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>list</code></b>(                  <code><span title="typing.List">List</span>[<span title="typing.Dict">Dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+)              –
+              <div class="doc-md-description">
+                <p>List of creative prompts.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="pipeline.urban_lmm_pipeline.UrbanLMMPipeline.load_creative_prompts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">load_creative_prompts</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline.load_creative_prompts" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Load creative prompts from a JSON file.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>file_path</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Path to the JSON file containing creative prompts.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>list</code></b>(                  <code><span title="typing.List">List</span>[<span title="typing.Dict">Dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+)              –
+              <div class="doc-md-description">
+                <p>List of creative prompts.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="pipeline.urban_lmm_pipeline.UrbanLMMPipeline.load_factual_statements" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">load_factual_statements</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline.load_factual_statements" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Load factual statements from a JSON file.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>file_path</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Path to the JSON file containing factual statements.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>list</code></b>(                  <code><span title="typing.List">List</span>[<span title="typing.Dict">Dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+)              –
+              <div class="doc-md-description">
+                <p>List of factual statements.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="pipeline.urban_lmm_pipeline.UrbanLMMPipeline.run_pipeline" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">run_pipeline</span><span class="p">(</span><span class="n">factual_statements</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">creative_prompts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span></code>
+
+<a href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline.run_pipeline" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Run the complete pipeline.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>factual_statements</code></b>
+                  (<code><span title="list">list</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>List of factual statements. If None, loads from file.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>creative_prompts</code></b>
+                  (<code><span title="list">list</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>List of creative prompts. If None, generates from factual statements.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>num_samples</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>-1</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Number of factual statements to process. If -1, processes all.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><span title="typing.Dict">Dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]</code>
+)              –
+              <div class="doc-md-description">
+                <p>Pipeline results.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="pipeline.urban_lmm_pipeline.UrbanLMMPipeline.save_pipeline_results" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save_pipeline_results</span><span class="p">(</span><span class="n">pipeline_results</span><span class="p">)</span></code>
+
+<a href="#pipeline.urban_lmm_pipeline.UrbanLMMPipeline.save_pipeline_results" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Save pipeline results to JSON files.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>pipeline_results</code></b>
+                  (<code><span title="dict">dict</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Pipeline results.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pipeline.urban_lmm_pipeline.main" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">main</span><span class="p">()</span></code>
+
+<a href="#pipeline.urban_lmm_pipeline.main" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Main function to run the pipeline.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="critique">Critique<a class="headerlink" href="#critique" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="critique.abstract.CritiqueModel" class="doc doc-heading">
+            <code>CritiqueModel</code>
+
+
+<a href="#critique.abstract.CritiqueModel" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="abc.ABC">ABC</span></code></p>
+
+
+        <p>Abstract base class for critique models.</p>
+<p>Subclasses implement specific critique strategies (e.g., coherence,
+parsimony, uncertainty) that evaluate generated text against criteria.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>generative_model</code></b>
+              –
+              <div class="doc-md-description">
+                <p>Optional handle to the text generation model used by the pipeline.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>prompt_dict</code></b>
+                  (<code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optional prompt configuration mapping used by some critiques.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>type</code></b>
+                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Category of critique (e.g., 'hard', 'soft').</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">MyCritique</span><span class="p">(</span><span class="n">CritiqueModel</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">critique</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">pass</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mc</span> <span class="o">=</span> <span class="n">MyCritique</span><span class="p">(</span><span class="n">generative_model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prompt_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;soft&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mc</span><span class="o">.</span><span class="n">critique</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+<span class="go">{&#39;score&#39;: 1.0}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.abstract.CritiqueModel.critique" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">critique</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+<a href="#critique.abstract.CritiqueModel.critique" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Run the critique and return structured results.</p>
+<p>Implementations should accept inputs relevant to the critique and
+return a dictionary of metrics/scores.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>*args</code></b>
+              –
+              <div class="doc-md-description">
+                <p>Positional arguments defined by the concrete critique implementation.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>**kwargs</code></b>
+              –
+              <div class="doc-md-description">
+                <p>Keyword arguments defined by the concrete critique implementation.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>              –
+              <div class="doc-md-description">
+                <p>A mapping of metric names to their computed values.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>Basic subclass pattern:</p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">SimpleCrit</span><span class="p">(</span><span class="n">CritiqueModel</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">critique</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;len&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)}</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">pass</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.abstract.CritiqueModel.shutdown" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">shutdown</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+<a href="#critique.abstract.CritiqueModel.shutdown" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Release any resources held by the critique implementation.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>*args</code></b>
+              –
+              <div class="doc-md-description">
+                <p>Implementation-specific parameters.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>**kwargs</code></b>
+              –
+              <div class="doc-md-description">
+                <p>Implementation-specific keyword parameters.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">NoOp</span><span class="p">(</span><span class="n">CritiqueModel</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">critique</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="o">**</span><span class="n">__</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">{}</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;closed&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">NoOp</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+<span class="go">closed</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="critique.parsimony.ParsimonyCritique" class="doc doc-heading">
+            <code>ParsimonyCritique</code>
+
+
+<a href="#critique.parsimony.ParsimonyCritique" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="CritiqueModel (critique.abstract.CritiqueModel)" href="#critique.abstract.CritiqueModel">CritiqueModel</a></code></p>
+
+
+        <p>Measure semantic parsimony of an explanation relative to premise/output.</p>
+<p>Uses a lightweight concept extraction (nouns/adjectives via spaCy) to
+estimate semantic drift between the explanation and the premise/output.</p>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">pc</span> <span class="o">=</span> <span class="n">ParsimonyCritique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span> <span class="o">=</span> <span class="s2">&quot;Step 1: IF A THEN B. Therefore, B.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pc</span><span class="o">.</span><span class="n">critique</span><span class="p">(</span><span class="n">premise</span><span class="o">=</span><span class="s2">&quot;A implies B&quot;</span><span class="p">,</span> <span class="n">hypothesis</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">explanation</span><span class="o">=</span><span class="n">exp</span><span class="p">)</span>
+<span class="go">{&#39;parsimony&#39;: ...}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.parsimony.ParsimonyCritique.critique" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">critique</span><span class="p">(</span><span class="n">premise</span><span class="p">,</span> <span class="n">hypothesis</span><span class="p">,</span> <span class="n">explanation</span><span class="p">)</span></code>
+
+<a href="#critique.parsimony.ParsimonyCritique.critique" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compute parsimony (semantic drift) between explanation and premise/output.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>premise</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The original factual statement or premise text.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>hypothesis</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The generated output or hypothesis text.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>explanation</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The explanation text with steps/assumptions.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><span title="dict">dict</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>A dictionary with key 'parsimony' (int) indicating drift.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">pc</span> <span class="o">=</span> <span class="n">ParsimonyCritique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pc</span><span class="o">.</span><span class="n">critique</span><span class="p">(</span><span class="s2">&quot;A implies B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;Step 1: IF A THEN B. Therefore, B.&quot;</span><span class="p">)</span>
+<span class="go">{&#39;parsimony&#39;: ...}</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.parsimony.ParsimonyCritique.extract_unique_concepts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">extract_unique_concepts</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></code>
+
+<a href="#critique.parsimony.ParsimonyCritique.extract_unique_concepts" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Extract unique concept tokens (nouns/adjectives) from text.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>text</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input text from which to extract concepts.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="typing.List">List</span>[<span title="str">str</span>]</code>
+              –
+              <div class="doc-md-description">
+                <p>List[str]: Unique set of noun/adjective tokens found in the text.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">pc</span> <span class="o">=</span> <span class="n">ParsimonyCritique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">pc</span><span class="o">.</span><span class="n">extract_unique_concepts</span><span class="p">(</span><span class="s2">&quot;The red car is fast.&quot;</span><span class="p">))</span>
+<span class="go">[...]</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.parsimony.ParsimonyCritique.parse_explanation" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">parse_explanation</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span></code>
+
+<a href="#critique.parsimony.ParsimonyCritique.parse_explanation" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Parse explanation text to extract steps, assumptions, and summary.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>exp</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Explanation text containing lines like "Step i:" and "Assumption:".</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>              –
+              <div class="doc-md-description">
+                <p>Dictionary with keys:
+- steps (list[str]): Extracted step strings without the "Step i:" prefix.
+- assumptions (list[str]): Extracted assumption strings.
+- summary (str): The concluding line starting with "Therefore," if present; otherwise last step.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">pc</span> <span class="o">=</span> <span class="n">ParsimonyCritique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span> <span class="o">=</span> <span class="s2">&quot;Step 1: IF A THEN B. Therefore, B.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">parse_explanation</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;steps&quot;</span><span class="p">,</span> <span class="s2">&quot;assumptions&quot;</span><span class="p">,</span> <span class="s2">&quot;summary&quot;</span><span class="p">}</span>
+<span class="go">True</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.parsimony.ParsimonyCritique.shutdown" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">shutdown</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+<a href="#critique.parsimony.ParsimonyCritique.shutdown" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Shutdown and release resources, if any.</p>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">ParsimonyCritique</span><span class="p">()</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="critique.coherence.CoherenceCritique" class="doc doc-heading">
+            <code>CoherenceCritique</code>
+
+
+<a href="#critique.coherence.CoherenceCritique" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="CritiqueModel (critique.abstract.CritiqueModel)" href="#critique.abstract.CritiqueModel">CritiqueModel</a></code></p>
+
+
+        <p>Evaluate coherence via NLI-based entailment checks.</p>
+<p>This critique uses a pretrained NLI model to estimate entailment,
+neutrality, and contradiction probabilities between steps in an
+explanation and summarizes them into a coherence score.</p>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">CoherenceCritique</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;roberta&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span> <span class="o">=</span> <span class="s2">&quot;Step 1: IF X THEN Y. Step 2: IF Y THEN Z. Therefore, Z.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">critique</span><span class="p">(</span><span class="n">explanation</span><span class="o">=</span><span class="n">exp</span><span class="p">)</span>
+<span class="go">{&#39;coherence&#39;: ...}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.coherence.CoherenceCritique.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s1">&#39;roberta&#39;</span><span class="p">)</span></code>
+
+<a href="#critique.coherence.CoherenceCritique.__init__" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize the NLI-based coherence critique.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>alias</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>&#39;roberta&#39;</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Model alias to select a specific pretrained NLI model.
+One of {'roberta', 'albert', 'bart', 'electra', 'xlnet'}.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">CoherenceCritique</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;roberta&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.coherence.CoherenceCritique.critique" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">critique</span><span class="p">(</span><span class="n">premise</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hypothesis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">explanation</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span></code>
+
+<a href="#critique.coherence.CoherenceCritique.critique" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compute a coherence score from an explanation using NLI.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>premise</code></b>
+                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optional premise text (not used directly; kept for API symmetry).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>hypothesis</code></b>
+                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optional hypothesis text (not used directly; kept for API symmetry).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>explanation</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>&#39;&#39;</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>An explanation with steps/assumptions to analyze.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><span title="dict">dict</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>A dictionary with key 'coherence' containing the numeric score.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">CoherenceCritique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span> <span class="o">=</span> <span class="s2">&quot;Step 1: IF Rain THEN Wet. Step 2: IF Wet THEN Slippery. Therefore, Slippery.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">critique</span><span class="p">(</span><span class="n">explanation</span><span class="o">=</span><span class="n">exp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;coherence&quot;</span><span class="p">],</span> <span class="nb">float</span><span class="p">)</span>
+<span class="go">True</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.coherence.CoherenceCritique.get_entailment_scores" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_entailment_scores</span><span class="p">(</span><span class="n">premise</span><span class="p">,</span> <span class="n">hypothesis</span><span class="p">)</span></code>
+
+<a href="#critique.coherence.CoherenceCritique.get_entailment_scores" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compute NLI probabilities between a premise and a hypothesis.</p>
+<p>Uses a pretrained sequence classification model to return entailment,
+neutral, and contradiction probabilities.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>premise</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The premise sentence.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>hypothesis</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The hypothesis sentence to evaluate against the premise.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><span title="dict">dict</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>A dictionary with keys 'entailment', 'neutral', 'contradiction' mapped to probabilities.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">CoherenceCritique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">get_entailment_scores</span><span class="p">(</span><span class="s2">&quot;Cats are animals.&quot;</span><span class="p">,</span> <span class="s2">&quot;Cats are mammals.&quot;</span><span class="p">)</span>
+<span class="go">{&#39;entailment&#39;: ..., &#39;neutral&#39;: ..., &#39;contradiction&#39;: ...}</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.coherence.CoherenceCritique.internal_entailment" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">internal_entailment</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span></code>
+
+<a href="#critique.coherence.CoherenceCritique.internal_entailment" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compute internal entailment across consecutive steps.</p>
+<p>For each pair of consecutive statements in the explanation (IF ... THEN ...),
+compute entailment scores and average them by label.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>steps</code></b>
+                  (<code><span title="list">list</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>A list of step strings, typically from parse_explanation.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><span title="dict">dict</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Mean probabilities for 'entailment', 'neutral', and 'contradiction'.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">CoherenceCritique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">internal_entailment</span><span class="p">([</span><span class="s2">&quot;Step 1: IF A THEN B.&quot;</span><span class="p">,</span> <span class="s2">&quot;Step 2: IF B THEN C.&quot;</span><span class="p">,</span> <span class="s2">&quot;Therefore, C.&quot;</span><span class="p">])</span>
+<span class="go">{&#39;entailment&#39;: ..., &#39;neutral&#39;: ..., &#39;contradiction&#39;: ...}</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.coherence.CoherenceCritique.parse_explanation" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">parse_explanation</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span></code>
+
+<a href="#critique.coherence.CoherenceCritique.parse_explanation" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Parse a chain-of-thought style explanation into components.</p>
+<p>Extracts steps ("Step i:"), assumptions ("Assumption:"), and a
+concluding summary (line starting with "Therefore,") if present.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>exp</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Explanation text containing steps and assumptions.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><span title="dict">dict</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>A dictionary with keys 'steps' (list[str]), 'assumptions' (list[str]),
+and 'summary' (str).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">CoherenceCritique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span> <span class="o">=</span> <span class="s2">&quot;Step 1: IF X THEN Y. Step 2: IF Y THEN Z. Therefore, Z.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">parse_explanation</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
+<span class="go">{&#39;steps&#39;: [...], &#39;assumptions&#39;: [...], &#39;summary&#39;: &#39;Therefore, Z.&#39;}</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.coherence.CoherenceCritique.shutdown" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">shutdown</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+<a href="#critique.coherence.CoherenceCritique.shutdown" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Shutdown and release resources held by the model, if any.</p>
+<p>This implementation is a no-op because the Hugging Face models are
+managed by the transformers library.</p>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">CoherenceCritique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="critique.uncertainty.UncertaintyCritique" class="doc doc-heading">
+            <code>UncertaintyCritique</code>
+
+
+<a href="#critique.uncertainty.UncertaintyCritique" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="CritiqueModel (critique.abstract.CritiqueModel)" href="#critique.abstract.CritiqueModel">CritiqueModel</a></code></p>
+
+
+        <p>Estimate epistemic uncertainty from explanations using a certainty model.</p>
+<p>Wraps a certainty estimator that returns scores from 1 (low certainty) to 6
+(high certainty) and converts them to uncertainty values.</p>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">uc</span> <span class="o">=</span> <span class="n">UncertaintyCritique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span> <span class="o">=</span> <span class="s2">&quot;Step 1: Assumption: It might rain. Therefore, roads could be wet.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">uc</span><span class="o">.</span><span class="n">critique</span><span class="p">(</span><span class="n">explanation</span><span class="o">=</span><span class="n">exp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;uncertainty&#39;</span> <span class="ow">in</span> <span class="n">out</span>
+<span class="go">True</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.uncertainty.UncertaintyCritique.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">()</span></code>
+
+<a href="#critique.uncertainty.UncertaintyCritique.__init__" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize the uncertainty critique using a certainty estimator.</p>
+<p>The underlying estimator outputs certainty scores in [1, 6];
+this class converts them to uncertainty scores by computing (6 - score).</p>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">UncertaintyCritique</span><span class="p">()</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.uncertainty.UncertaintyCritique.calculate_avg_uncertainity" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">calculate_avg_uncertainity</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span></code>
+
+<a href="#critique.uncertainty.UncertaintyCritique.calculate_avg_uncertainity" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Calculate average uncertainty for a list of texts.</p>
+<p>The underlying estimator returns certainty in [1, 6]. We convert to
+uncertainty by computing (6 - certainty) for each text, then take the mean.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>texts</code></b>
+                  (<code><span title="list">list</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>A list of strings to evaluate.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>float</code></b>(                  <code><span title="float">float</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Mean uncertainty across all texts.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">uc</span> <span class="o">=</span> <span class="n">UncertaintyCritique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">uc</span><span class="o">.</span><span class="n">calculate_avg_uncertainity</span><span class="p">([</span><span class="s2">&quot;I think so.&quot;</span><span class="p">]),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">...</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.uncertainty.UncertaintyCritique.parse_explanation" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">parse_explanation</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span></code>
+
+<a href="#critique.uncertainty.UncertaintyCritique.parse_explanation" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Parse an explanation into steps, assumptions, and summary.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>exp</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Explanation text with lines such as "Step i:" and "Assumption:".</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>(                  <code><span title="dict">dict</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Dictionary with 'steps' (list[str]), 'assumptions' (list[str]), and 'summary' (str).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">uc</span> <span class="o">=</span> <span class="n">UncertaintyCritique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span> <span class="o">=</span> <span class="s2">&quot;Step 1: Assumption: It might rain. Therefore, roads could be wet.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">uc</span><span class="o">.</span><span class="n">parse_explanation</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;steps&#39;</span><span class="p">,</span> <span class="s1">&#39;assumptions&#39;</span><span class="p">,</span> <span class="s1">&#39;summary&#39;</span><span class="p">}</span>
+<span class="go">True</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="critique.uncertainty.UncertaintyCritique.shutdown" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">shutdown</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+<a href="#critique.uncertainty.UncertaintyCritique.shutdown" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Shutdown and release resources if needed.</p>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">UncertaintyCritique</span><span class="p">()</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="generation">Generation<a class="headerlink" href="#generation" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="generation.abstract.GenerativeModel" class="doc doc-heading">
+            <code>GenerativeModel</code>
+
+
+<a href="#generation.abstract.GenerativeModel" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="abc.ABC">ABC</span></code></p>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="generation.abstract.GenerativeModel.extract_numbered_list" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">extract_numbered_list</span><span class="p">(</span><span class="n">model_reponse</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">remove_number</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#generation.abstract.GenerativeModel.extract_numbered_list" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Extract content after a specific prefix or numbered list.</p>
+<p>Parameters:
+- model_reponse (str): Input string from which to extract content
+- prefix (str, optional): Prefix to match. If provided, extract content after this prefix
+- remove_number (bool, optional): If True, remove numbers from the extracted content</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="generation.gpt.GPT" class="doc doc-heading">
+            <code>GPT</code>
+
+
+<a href="#generation.gpt.GPT" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="GenerativeModel (generation.abstract.GenerativeModel)" href="#generation.abstract.GenerativeModel">GenerativeModel</a></code></p>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="generation.gpt.GPT.generate" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">generate</span><span class="p">(</span><span class="n">model_prompt_dir</span><span class="p">,</span> <span class="n">prompt_name</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">numbered_list</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">remove_number</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">replacements</span><span class="p">)</span></code>
+
+<a href="#generation.gpt.GPT.generate" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Generates a response from the LLM model.</p>
+<p>Parameters:
+- model_prompt_dir (str): The directory of the model prompt.
+- prompt_name (str): The name of the prompt.
+- prefix (str, optional): A prefix to match before the numbered list.
+- numbered_list (bool, optional): If True, the response will be
+  extracted as a numbered list.
+- remove_number (bool, optional): If True, the numbered list will
+  be cleaned of numbering.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="prompt">Prompt<a class="headerlink" href="#prompt" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="utilities-and-scripts">Utilities and Scripts<a class="headerlink" href="#utilities-and-scripts" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+        <p>Script to define prompts for creative tasks (rap and urban poem versions) and link them to factual statement IDs.</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="creative_prompts.generate_creative_prompts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">generate_creative_prompts</span><span class="p">(</span><span class="n">factual_statements</span><span class="p">)</span></code>
+
+<a href="#creative_prompts.generate_creative_prompts" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Generate creative prompts for each factual statement.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="creative_prompts.save_to_csv" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save_to_csv</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></code>
+
+<a href="#creative_prompts.save_to_csv" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Save data to a CSV file.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="creative_prompts.save_to_json" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save_to_json</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></code>
+
+<a href="#creative_prompts.save_to_json" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Save data to a JSON file.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+        <p>Script to generate culturally neutral factual sentences and save them in CSV/JSON format.</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="factual_statements.save_to_csv" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save_to_csv</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></code>
+
+<a href="#factual_statements.save_to_csv" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Save data to a CSV file.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="factual_statements.save_to_json" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save_to_json</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></code>
+
+<a href="#factual_statements.save_to_json" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Save data to a JSON file.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+
+    <div class="doc doc-contents first">
+
+        <p>PEIRCE + LMM Pipeline Runner</p>
+<p>This script provides a user-friendly interface for running the PEIRCE + LMM pipeline.
+It allows you to run the pipeline with default settings or customize various parameters.</p>
+
+
+<details class="usage" open>
+  <summary>Usage</summary>
+  <p>python run_pipeline.py [options]</p>
+</details>
+
+<details class="options" open>
+  <summary>Options</summary>
+  <p>--model MODEL         Name of the LLM model to use (default: gpt-oss)
+--provider PROVIDER   Provider of the LLM model (default: ollama)
+--max-iterations N    Maximum number of refinement iterations (default: 3)
+--min-urban-terms N   Minimum number of urban terms required (default: 2)
+--output-dir DIR      Directory to save the outputs (default: data/pipeline_outputs)
+--num-samples N       Number of factual statements to process (default: 3)
+--input-file FILE     Path to a custom factual statements JSON file
+--prompts-file FILE   Path to a custom creative prompts JSON file
+--verbose             Enable verbose output
+--help                Show this help message and exit</p>
+</details>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <h2 id="run_pipeline--run-with-default-settings-processes-first-3-factual-statements">Run with default settings (processes first 3 factual statements)<a class="headerlink" href="#run_pipeline--run-with-default-settings-processes-first-3-factual-statements" title="Permanent link">&para;</a></h2>
+<p>python run_pipeline.py</p>
+<h2 id="run_pipeline--run-with-custom-model-and-provider">Run with custom model and provider<a class="headerlink" href="#run_pipeline--run-with-custom-model-and-provider" title="Permanent link">&para;</a></h2>
+<p>python run_pipeline.py --model gpt-4o --provider openai</p>
+<h2 id="run_pipeline--process-more-samples">Process more samples<a class="headerlink" href="#run_pipeline--process-more-samples" title="Permanent link">&para;</a></h2>
+<p>python run_pipeline.py --num-samples 10</p>
+<h2 id="run_pipeline--use-custom-input-files">Use custom input files<a class="headerlink" href="#run_pipeline--use-custom-input-files" title="Permanent link">&para;</a></h2>
+<p>python run_pipeline.py --input-file my_facts.json --prompts-file my_prompts.json</p>
+<h2 id="run_pipeline--enable-verbose-output">Enable verbose output<a class="headerlink" href="#run_pipeline--enable-verbose-output" title="Permanent link">&para;</a></h2>
+<p>python run_pipeline.py --verbose</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="run_pipeline.load_custom_file" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">load_custom_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">file_type</span><span class="p">)</span></code>
+
+<a href="#run_pipeline.load_custom_file" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Load a custom JSON file.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>file_path</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Path to the JSON file</p>
+              </div>
+            </li>
+            <li>
+              <b><code>file_type</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Type of file ('factual_statements' or 'creative_prompts')</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>list</code></b>              –
+              <div class="doc-md-description">
+                <p>Loaded data from the JSON file</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="run_pipeline.main" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">main</span><span class="p">()</span></code>
+
+<a href="#run_pipeline.main" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Main function to run the pipeline.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="run_pipeline.parse_arguments" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">parse_arguments</span><span class="p">()</span></code>
+
+<a href="#run_pipeline.parse_arguments" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Parse command-line arguments.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              –
+              <div class="doc-md-description">
+                <p>argparse.Namespace: Parsed arguments</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="run_pipeline.print_progress" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">print_progress</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#run_pipeline.print_progress" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Print progress message if verbose mode is enabled.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>message</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Progress message</p>
+              </div>
+            </li>
+            <li>
+              <b><code>verbose</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Whether to print the message</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="run_pipeline.run_pipeline_with_progress" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">run_pipeline_with_progress</span><span class="p">(</span><span class="n">args</span><span class="p">)</span></code>
+
+<a href="#run_pipeline.run_pipeline_with_progress" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Run the pipeline with progress tracking.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>args</code></b>
+                  (<code><span title="argparse.Namespace">Namespace</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Command-line arguments</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>dict</code></b>              –
+              <div class="doc-md-description">
+                <p>Pipeline results</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

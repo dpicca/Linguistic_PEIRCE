@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Documentation for the PEIRCE + LMM pipeline and components." /><meta name="author" content="PEIRCE Team" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>PEIRCE + LMM</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> PEIRCE + LMM
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pipeline-overview">Pipeline Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#project-structure">Project Structure</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#key-files">Key Files</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pipeline-architecture">Pipeline Architecture</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline-diagram">Pipeline Diagram</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#data-flow">Data Flow</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installation-and-setup">Installation and Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-usage">Basic Usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#command-line-usage">Command Line Usage</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#common-tasks">Common Tasks</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#custom-factual-statements-and-prompts">Custom Factual Statements and Prompts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#advanced-usage-custom-input-and-output-files">Advanced Usage: Custom Input and Output Files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#advanced-usage-verbose-mode">Advanced Usage: Verbose Mode</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuration-options">Configuration Options</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#model-selection">Model Selection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#provider-selection">Provider Selection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#refinement-parameters">Refinement Parameters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#output-customization">Output Customization</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#output-format">Output Format</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#output-files">Output Files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#json-structure-example">JSON Structure Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#components-in-detail">Components in Detail</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#generation-component">Generation Component</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hard-critique-component">Hard Critique Component</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#soft-critique-component">Soft Critique Component</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#refinement-component">Refinement Component</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#common-issues">Common Issues</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#api-key-issues">API Key Issues</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#model-not-found">Model Not Found</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#critique-component-initialization-failures">Critique Component Initialization Failures</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#output-directory-issues">Output Directory Issues</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#error-handling">Error Handling</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="api/">API Reference</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">PEIRCE + LMM</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="peirce-lmm-pipeline-runner">PEIRCE + LMM Pipeline Runner<a class="headerlink" href="#peirce-lmm-pipeline-runner" title="Permanent link">&para;</a></h1>
+<p>This module implements the complete pipeline for the PEIRCE + LMM project, integrating all components into a unified workflow for transforming factual statements into creative urban-style text.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#pipeline-overview">Pipeline Overview</a></li>
+<li><a href="#project-structure">Project Structure</a></li>
+<li><a href="#pipeline-architecture">Pipeline Architecture</a></li>
+<li><a href="#installation-and-setup">Installation and Setup</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#common-tasks">Common Tasks</a></li>
+<li><a href="#configuration-options">Configuration Options</a></li>
+<li><a href="#output-format">Output Format</a></li>
+<li><a href="#components-in-detail">Components in Detail</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#testing">Testing</a></li>
+</ul>
+<h2 id="pipeline-overview">Pipeline Overview<a class="headerlink" href="#pipeline-overview" title="Permanent link">&para;</a></h2>
+<p>The pipeline consists of the following steps:</p>
+<ol>
+<li><strong>Input</strong>: Factual statement (id, text, topic)</li>
+<li><strong>Prompt</strong>: Generated rap / urban poem prompt, linked to the id</li>
+<li><strong>Generation</strong>: LLM produces creative version (with access to the knowledge base)</li>
+<li><strong>Hard Critique</strong>:</li>
+<li>Mapping of terms used in the creative output to the knowledge base</li>
+<li>Check for required elements and semantic fidelity to the fact</li>
+<li><strong>Soft Critique</strong>:</li>
+<li>Calculation of parsimony, coherence, uncertainty, fluency, cultural fit</li>
+<li><strong>Feedback &amp; Refinement</strong>:</li>
+<li>If any critique fails, a new generation → critique → feedback iteration is launched</li>
+<li>Process continues until preset thresholds are met or maximum iterations reached</li>
+<li><strong>Output</strong>:</li>
+<li>Final creative version</li>
+<li>Critique scores</li>
+<li>Log of iterations</li>
+<li>Symbolic mappings (for subsequent analysis)</li>
+</ol>
+<h2 id="project-structure">Project Structure<a class="headerlink" href="#project-structure" title="Permanent link">&para;</a></h2>
+<p>The PEIRCE + LMM project is organized into several key directories:</p>
+<pre><code>peirce/
+├── pipeline/           # Main pipeline implementation
+├── generation/         # Text generation components
+├── critique/           # Critique components for evaluation
+├── refinement/         # Refinement components for improvement
+├── prompt/             # Prompt templates and models
+├── data/               # Input data and output results
+│   └── pipeline_outputs/  # Pipeline output files
+└── test/               # Test scripts and documentation
+</code></pre>
+<h3 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>pipeline/urban_lmm_pipeline.py</code>: Main pipeline implementation</li>
+<li><code>generation/urban_lmm.py</code>: Text generation with urban slang</li>
+<li><code>critique/urban_lmm_hard_critique.py</code>: Formal/symbolic checks</li>
+<li><code>critique/urban_lmm_soft.py</code>: Linguistic/epistemic checks</li>
+<li><code>refinement/urban_lmm_refinement.py</code>: Iterative refinement mechanism</li>
+<li><code>config.yaml</code>: Configuration for LLM providers and models</li>
+</ul>
+<h2 id="pipeline-architecture">Pipeline Architecture<a class="headerlink" href="#pipeline-architecture" title="Permanent link">&para;</a></h2>
+<p>The pipeline integrates several components that work together to transform factual statements into creative urban-style text:</p>
+<ol>
+<li><strong>UrbanLMMPipeline</strong>: The main pipeline class that orchestrates the entire process</li>
+<li><strong>UrbanLMMGenerator</strong>: Generates creative text with urban slang</li>
+<li><strong>UrbanLMMHardCritique</strong>: Performs formal/symbolic checks on the generated text</li>
+<li><strong>UrbanLMMSoftCritique</strong>: Performs linguistic/epistemic checks on the generated text</li>
+<li><strong>UrbanLMMRefinement</strong>: Refines the generated text based on critique feedback</li>
+</ol>
+<h3 id="pipeline-diagram">Pipeline Diagram<a class="headerlink" href="#pipeline-diagram" title="Permanent link">&para;</a></h3>
+<pre><code>+------------------+     +------------------+     +------------------+
+|                  |     |                  |     |                  |
+|  Factual         |     |  Creative        |     |  Generated       |
+|  Statements      +----&gt;+  Prompts         +----&gt;+  Output          |
+|                  |     |                  |     |                  |
++------------------+     +------------------+     +--------+---------+
+                                                           |
+                                                           v
++------------------+     +------------------+     +--------+---------+
+|                  |     |                  |     |                  |
+|  Final           |     |  Refined         |     |  Critique        |
+|  Output          +&lt;----+  Output          +&lt;----+  Results         |
+|                  |     |                  |     |                  |
++------------------+     +------------------+     +--------+---------+
+                                 ^                         |
+                                 |                         |
+                                 |    +------------------+ |
+                                 |    |                  | |
+                                 +----+  Refinement      +-+
+                                      |  Feedback        |
+                                      |                  |
+                                      +------------------+
+</code></pre>
+<h3 id="data-flow">Data Flow<a class="headerlink" href="#data-flow" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Factual statements are loaded or provided as input</li>
+<li>Creative prompts are generated from the factual statements</li>
+<li>The generator produces creative text based on the prompts</li>
+<li>The hard critique evaluates the text for urban terms and semantic fidelity</li>
+<li>The soft critique evaluates the text for parsimony, coherence, uncertainty, etc.</li>
+<li>If any critique fails, the refinement component generates a new prompt with feedback</li>
+<li>The generator produces refined text based on the new prompt</li>
+<li>The process repeats until both critiques pass or maximum iterations reached</li>
+<li>The final output is saved to the output directory</li>
+</ol>
+<h2 id="installation-and-setup">Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Permanent link">&para;</a></h2>
+<h3 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Python 3.6+</li>
+<li>OpenAI API key (or other LLM provider credentials)</li>
+<li>spaCy with the <code>en_core_web_sm</code> model</li>
+<li>Transformers library (for soft critique components)</li>
+<li>Other dependencies as specified in the project's requirements.txt</li>
+</ul>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Clone the repository:
+   <code>bash
+   git clone https://github.com/your-username/peirce.git
+   cd peirce</code></p>
+</li>
+<li>
+<p>Install the dependencies:
+   <code>bash
+   pip install -r requirements.txt</code></p>
+</li>
+<li>
+<p>Install the spaCy model:
+   <code>bash
+   python -m spacy download en_core_web_sm</code></p>
+</li>
+<li>
+<p>Configure your API keys in <code>config.yaml</code>:
+   ```yaml
+   gpt-4o:
+     engine: gpt-4o
+     api_key: your_openai_api_key</p>
+</li>
+</ol>
+<p>ollama:
+     api_url: 'http://localhost:11434'
+     available_models:
+       - llama3
+       - mistral
+       - gemma
+   ```</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">from pipeline.urban_lmm_pipeline import UrbanLMMPipeline
+
+# Initialize the pipeline (defaults to Ollama gpt-oss)
+pipeline = UrbanLMMPipeline(
+    model_name=&quot;gpt-oss&quot;,
+    provider=&quot;ollama&quot;,
+    max_iterations=3,
+    min_urban_terms=2,
+    output_dir=None
+)
+
+# Run the pipeline with default settings (processes first 3 factual statements)
+pipeline_results = pipeline.run_pipeline(num_samples=3)
+</code></pre>
+<h3 id="command-line-usage">Command Line Usage<a class="headerlink" href="#command-line-usage" title="Permanent link">&para;</a></h3>
+<p>You can also run the pipeline from the command line:</p>
+<pre><code class="language-bash"># Run with default settings (processes first 3 factual statements)
+python run_pipeline.py
+
+# Run with custom settings
+python run_pipeline.py --model gpt-oss --provider ollama --max-iterations 5 --min-urban-terms 3 --num-samples 10
+
+# Get help
+python run_pipeline.py --help
+</code></pre>
+<h2 id="common-tasks">Common Tasks<a class="headerlink" href="#common-tasks" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Run unit tests: <code>python -m unittest discover -s test</code></li>
+<li>Quick local run (no API keys, Ollama): <code>python run_pipeline.py --model gpt-oss --provider ollama --num-samples 2</code></li>
+<li>Use OpenAI (requires keys in <code>config.yaml</code>): <code>python run_pipeline.py --model gpt-4o --provider openai</code></li>
+<li>Generate prompts only (programmatic): use <code>UrbanLMMPipeline.generate_creative_prompts(statements)</code></li>
+<li>Outputs location: <code>data/pipeline_outputs/</code> (timestamped JSON files)</li>
+</ul>
+<h3 id="custom-factual-statements-and-prompts">Custom Factual Statements and Prompts<a class="headerlink" href="#custom-factual-statements-and-prompts" title="Permanent link">&para;</a></h3>
+<p>You can provide your own factual statements and creative prompts:</p>
+<pre><code class="language-python">from pipeline.urban_lmm_pipeline import UrbanLMMPipeline
+
+# Initialize the pipeline
+pipeline = UrbanLMMPipeline(
+    model_name=&quot;llama3&quot;,
+    provider=&quot;ollama&quot;
+)
+
+# Create custom factual statements
+custom_statements = [
+    {
+        &quot;id&quot;: &quot;CUSTOM001&quot;,
+        &quot;factual_statement&quot;: &quot;Your factual statement here.&quot;,
+        &quot;topic&quot;: &quot;your_topic&quot;
+    }
+]
+
+# Run the pipeline with custom factual statements
+pipeline_results = pipeline.run_pipeline(factual_statements=custom_statements)
+
+# Or generate creative prompts first and then run the pipeline
+creative_prompts = pipeline.generate_creative_prompts(custom_statements)
+pipeline_results = pipeline.run_pipeline(
+    factual_statements=custom_statements,
+    creative_prompts=creative_prompts
+)
+</code></pre>
+<h3 id="advanced-usage-custom-input-and-output-files">Advanced Usage: Custom Input and Output Files<a class="headerlink" href="#advanced-usage-custom-input-and-output-files" title="Permanent link">&para;</a></h3>
+<pre><code class="language-bash"># Run the pipeline with custom input and output files
+python run_pipeline.py --input-file my_facts.json --output-dir my_outputs --prompts-file my_prompts.json
+</code></pre>
+<h3 id="advanced-usage-verbose-mode">Advanced Usage: Verbose Mode<a class="headerlink" href="#advanced-usage-verbose-mode" title="Permanent link">&para;</a></h3>
+<pre><code class="language-bash"># Run the pipeline in verbose mode to see detailed progress
+python run_pipeline.py --verbose
+</code></pre>
+<h2 id="configuration-options">Configuration Options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
+<h3 id="model-selection">Model Selection<a class="headerlink" href="#model-selection" title="Permanent link">&para;</a></h3>
+<p>The pipeline supports different LLM models:</p>
+<ul>
+<li><strong>OpenAI models</strong>: gpt-3.5-turbo, gpt-4o, gpt-4o-mini</li>
+<li><strong>Ollama models</strong>: llama3, mistral, gemma</li>
+</ul>
+<p>You can specify the model using the <code>model_name</code> parameter:</p>
+<pre><code class="language-python">from pipeline.urban_lmm_pipeline import UrbanLMMPipeline
+
+pipeline = UrbanLMMPipeline(model_name=&quot;gpt-4o&quot;)
+</code></pre>
+<p>Or from the command line:</p>
+<pre><code class="language-bash">python run_pipeline.py --model gpt-4o
+</code></pre>
+<h3 id="provider-selection">Provider Selection<a class="headerlink" href="#provider-selection" title="Permanent link">&para;</a></h3>
+<p>The pipeline supports different LLM providers:</p>
+<ul>
+<li><strong>OpenAI</strong>: For OpenAI models</li>
+<li><strong>Ollama</strong>: For local models using Ollama</li>
+</ul>
+<p>You can specify the provider using the <code>provider</code> parameter:</p>
+<pre><code class="language-python">from pipeline.urban_lmm_pipeline import UrbanLMMPipeline
+
+pipeline = UrbanLMMPipeline(provider=&quot;openai&quot;)
+</code></pre>
+<p>Or from the command line:</p>
+<pre><code class="language-bash">python run_pipeline.py --provider openai
+</code></pre>
+<h3 id="refinement-parameters">Refinement Parameters<a class="headerlink" href="#refinement-parameters" title="Permanent link">&para;</a></h3>
+<p>You can customize the refinement process:</p>
+<ul>
+<li><strong>max_iterations</strong>: Maximum number of refinement iterations</li>
+<li><strong>min_urban_terms</strong>: Minimum number of urban terms required in the output</li>
+</ul>
+<pre><code class="language-python">from pipeline.urban_lmm_pipeline import UrbanLMMPipeline
+
+pipeline = UrbanLMMPipeline(max_iterations=5, min_urban_terms=3)
+</code></pre>
+<p>Or from the command line:</p>
+<pre><code class="language-bash">python run_pipeline.py --max-iterations 5 --min-urban-terms 3
+</code></pre>
+<h3 id="output-customization">Output Customization<a class="headerlink" href="#output-customization" title="Permanent link">&para;</a></h3>
+<p>You can specify a custom output directory:</p>
+<pre><code class="language-python">from pipeline.urban_lmm_pipeline import UrbanLMMPipeline
+
+pipeline = UrbanLMMPipeline(output_dir=&quot;my_outputs&quot;)
+</code></pre>
+<p>Or from the command line:</p>
+<pre><code class="language-bash">python run_pipeline.py --output-dir my_outputs
+</code></pre>
+<h2 id="output-format">Output Format<a class="headerlink" href="#output-format" title="Permanent link">&para;</a></h2>
+<p>The pipeline produces the following outputs:</p>
+<ol>
+<li><strong>Factual Statements</strong>: The input factual statements</li>
+<li><strong>Creative Prompts</strong>: The prompts generated from the factual statements</li>
+<li><strong>Outputs</strong>: The final creative versions after refinement</li>
+<li><strong>Iterations</strong>: Detailed logs of the refinement process</li>
+</ol>
+<p>Each output includes:
+- Hard critique results (term mapping, semantic fidelity)
+- Soft critique results (parsimony, coherence, uncertainty, etc.)
+- Feedback provided for improvement
+- Final refined output</p>
+<h3 id="output-files">Output Files<a class="headerlink" href="#output-files" title="Permanent link">&para;</a></h3>
+<p>The pipeline saves the following files to the output directory:</p>
+<ul>
+<li><code>factual_statements_[timestamp].json</code>: Input factual statements</li>
+<li><code>creative_prompts_[timestamp].json</code>: Generated creative prompts</li>
+<li><code>outputs_[timestamp].json</code>: Final creative versions</li>
+<li><code>iterations_[timestamp].json</code>: Detailed logs of the refinement process</li>
+<li><code>pipeline_results_[timestamp].json</code>: Complete pipeline results</li>
+</ul>
+<h3 id="json-structure-example">JSON Structure Example<a class="headerlink" href="#json-structure-example" title="Permanent link">&para;</a></h3>
+<pre><code class="language-json">{
+  &quot;factual_statements&quot;: [
+    {
+      &quot;id&quot;: &quot;S001&quot;,
+      &quot;factual_statement&quot;: &quot;Water freezes at 0 degrees Celsius at standard atmospheric pressure.&quot;,
+      &quot;topic&quot;: &quot;science&quot;
+    }
+  ],
+  &quot;creative_prompts&quot;: [
+    {
+      &quot;id&quot;: &quot;S001_RAP&quot;,
+      &quot;factual_statement_id&quot;: &quot;S001&quot;,
+      &quot;prompt_type&quot;: &quot;rap&quot;,
+      &quot;prompt&quot;: &quot;Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Water freezes at 0 degrees Celsius at standard atmospheric pressure.'&quot;,
+      &quot;topic&quot;: &quot;science&quot;
+    }
+  ],
+  &quot;outputs&quot;: [
+    {
+      &quot;id&quot;: &quot;S001_RAP_OUTPUT&quot;,
+      &quot;prompt_id&quot;: &quot;S001_RAP&quot;,
+      &quot;factual_statement_id&quot;: &quot;S001&quot;,
+      &quot;prompt_type&quot;: &quot;rap&quot;,
+      &quot;topic&quot;: &quot;science&quot;,
+      &quot;output&quot;: &quot;Yo, listen up, this is no cap,\nWhen the temp hits zero C, that H2O gets trapped,\nAt standard pressure, it's a scientific fact,\nWater freezes solid, that's the exact impact,\nIce forming crystal clear, that's straight fire,\nFreezing point knowledge, let me take you higher,\nZero degrees Celsius, that's the magic number,\nStandard atmospheric pressure, no need to wonder,\nThis is basic science, but I'm making it lit,\nH2O transformation, that's some cold hard drip!&quot;
+    }
+  ],
+  &quot;iterations&quot;: [
+    {
+      &quot;original_prompt&quot;: &quot;Rewrite this fact as a rap using urban slang and hip-hop terminology: 'Water freezes at 0 degrees Celsius at standard atmospheric pressure.'&quot;,
+      &quot;factual_statement&quot;: &quot;Water freezes at 0 degrees Celsius at standard atmospheric pressure.&quot;,
+      &quot;final_output&quot;: &quot;Yo, listen up, this is no cap,\nWhen the temp hits zero C, that H2O gets trapped,\nAt standard pressure, it's a scientific fact,\nWater freezes solid, that's the exact impact,\nIce forming crystal clear, that's straight fire,\nFreezing point knowledge, let me take you higher,\nZero degrees Celsius, that's the magic number,\nStandard atmospheric pressure, no need to wonder,\nThis is basic science, but I'm making it lit,\nH2O transformation, that's some cold hard drip!&quot;,
+      &quot;best_output&quot;: &quot;Yo, listen up, this is no cap,\nWhen the temp hits zero C, that H2O gets trapped,\nAt standard pressure, it's a scientific fact,\nWater freezes solid, that's the exact impact,\nIce forming crystal clear, that's straight fire,\nFreezing point knowledge, let me take you higher,\nZero degrees Celsius, that's the magic number,\nStandard atmospheric pressure, no need to wonder,\nThis is basic science, but I'm making it lit,\nH2O transformation, that's some cold hard drip!&quot;,
+      &quot;best_score&quot;: 0.85,
+      &quot;iterations&quot;: [
+        {
+          &quot;iteration&quot;: 1,
+          &quot;output&quot;: &quot;Yo, listen up, this is no cap,\nWhen the temp hits zero C, that H2O gets trapped,\nAt standard pressure, it's a scientific fact,\nWater freezes solid, that's the exact impact,\nIce forming crystal clear, that's straight fire,\nFreezing point knowledge, let me take you higher,\nZero degrees Celsius, that's the magic number,\nStandard atmospheric pressure, no need to wonder,\nThis is basic science, but I'm making it lit,\nH2O transformation, that's some cold hard drip!&quot;,
+          &quot;hard_critique&quot;: {
+            &quot;passed&quot;: true,
+            &quot;urban_terms_pass&quot;: true,
+            &quot;urban_term_count&quot;: 4,
+            &quot;terms_found&quot;: [&quot;no cap&quot;, &quot;fire&quot;, &quot;lit&quot;, &quot;drip&quot;],
+            &quot;structure_preserved&quot;: true,
+            &quot;missing_entities&quot;: [],
+            &quot;feedback&quot;: []
+          },
+          &quot;soft_critique&quot;: {
+            &quot;passed&quot;: true,
+            &quot;overall_score&quot;: 0.85,
+            &quot;feedback&quot;: []
+          },
+          &quot;combined_score&quot;: 0.85
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<h2 id="components-in-detail">Components in Detail<a class="headerlink" href="#components-in-detail" title="Permanent link">&para;</a></h2>
+<h3 id="generation-component">Generation Component<a class="headerlink" href="#generation-component" title="Permanent link">&para;</a></h3>
+<p>The generation component (<code>UrbanLMMGenerator</code>) is responsible for generating creative text with urban slang. It:</p>
+<ol>
+<li>Loads urban dictionary terms from a file or uses fallback terms</li>
+<li>Enhances prompts with urban terms</li>
+<li>Generates text using the specified LLM model and provider</li>
+<li>Handles different model providers (OpenAI, Ollama)</li>
+</ol>
+<h3 id="hard-critique-component">Hard Critique Component<a class="headerlink" href="#hard-critique-component" title="Permanent link">&para;</a></h3>
+<p>The hard critique component (<code>UrbanLMMHardCritique</code>) performs formal/symbolic checks on the generated text. It:</p>
+<ol>
+<li>Maps creative terms to concepts in the knowledge base</li>
+<li>Verifies that the creative text includes at least a minimum number of urban terms</li>
+<li>Checks that the logical structure of the factual statement is respected</li>
+<li>Provides feedback if the verification fails</li>
+</ol>
+<h3 id="soft-critique-component">Soft Critique Component<a class="headerlink" href="#soft-critique-component" title="Permanent link">&para;</a></h3>
+<p>The soft critique component (<code>UrbanLMMSoftCritique</code>) performs linguistic/epistemic checks on the generated text. It:</p>
+<ol>
+<li>Assesses semantic density (parsimony)</li>
+<li>Evaluates coherence using textual entailment</li>
+<li>Analyzes uncertainty (hedging expressions)</li>
+<li>Evaluates fluency (readability, grammatical correctness)</li>
+<li>Assesses cultural fit with respect to urban slang</li>
+<li>Provides feedback for improvement</li>
+</ol>
+<h3 id="refinement-component">Refinement Component<a class="headerlink" href="#refinement-component" title="Permanent link">&para;</a></h3>
+<p>The refinement component (<code>UrbanLMMRefinement</code>) refines the generated text based on critique feedback. It:</p>
+<ol>
+<li>Generates initial output</li>
+<li>Critiques the output using hard and soft critiques</li>
+<li>Calculates combined score</li>
+<li>Generates refinement prompt based on feedback</li>
+<li>Generates refined output</li>
+<li>Repeats until both critiques pass or max iterations reached</li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
+<h4 id="api-key-issues">API Key Issues<a class="headerlink" href="#api-key-issues" title="Permanent link">&para;</a></h4>
+<p>If you encounter API key issues:</p>
+<ol>
+<li>Make sure your API keys are correctly set in <code>config.yaml</code></li>
+<li>Check that you have the necessary permissions for the API</li>
+<li>Verify that your API key is not expired</li>
+</ol>
+<h4 id="model-not-found">Model Not Found<a class="headerlink" href="#model-not-found" title="Permanent link">&para;</a></h4>
+<p>If you encounter "Model not found" errors:</p>
+<ol>
+<li>Check that the model is correctly specified in <code>config.yaml</code></li>
+<li>For Ollama models, make sure the model is pulled:
+   <code>bash
+   ollama pull llama3</code></li>
+<li>Verify that the model name is spelled correctly</li>
+</ol>
+<h4 id="critique-component-initialization-failures">Critique Component Initialization Failures<a class="headerlink" href="#critique-component-initialization-failures" title="Permanent link">&para;</a></h4>
+<p>If critique components fail to initialize:</p>
+<ol>
+<li>Make sure all dependencies are installed</li>
+<li>Check that the spaCy model is installed:
+   <code>bash
+   python -m spacy download en_core_web_sm</code></li>
+<li>For coherence critique, make sure you have access to the required Hugging Face models</li>
+</ol>
+<h4 id="output-directory-issues">Output Directory Issues<a class="headerlink" href="#output-directory-issues" title="Permanent link">&para;</a></h4>
+<p>If you encounter output directory issues:</p>
+<ol>
+<li>Make sure the output directory exists</li>
+<li>Check that you have write permissions for the directory</li>
+<li>Verify that there is enough disk space</li>
+</ol>
+<h3 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h3>
+<p>The pipeline includes comprehensive error handling to ensure that it can still provide useful results even if some components fail. If a critical error occurs, the pipeline will:</p>
+<ol>
+<li>Log the error</li>
+<li>Try to continue with fallback mechanisms</li>
+<li>Provide as much output as possible</li>
+</ol>
+<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<p>A test script is provided to demonstrate the usage of the pipeline:</p>
+<pre><code class="language-bash">python -m pipeline.test_pipeline
+</code></pre>
+<p>This script creates a small sample of factual statements, generates creative prompts, and explains how to run the full pipeline.</p>
+<p>For more comprehensive testing, you can use the test scripts in the <code>test</code> directory:</p>
+<pre><code class="language-bash">python -m unittest discover -s test
+</code></pre>
+<p>These tests verify that the pipeline works correctly with different configurations and inputs.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="api/" class="btn btn-neutral float-right" title="API Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="api/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-08-18 09:21:35.482743+00:00
+-->

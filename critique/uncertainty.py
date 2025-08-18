@@ -6,15 +6,56 @@ import re
 from typing import Optional
 class UncertaintyCritique(CritiqueModel):
       
+    """Estimate epistemic uncertainty from explanations using a certainty model.
+
+    Wraps a certainty estimator that returns scores from 1 (low certainty) to 6
+    (high certainty) and converts them to uncertainty values.
+
+    Examples:
+        >>> uc = UncertaintyCritique()
+        >>> exp = "Step 1: Assumption: It might rain. Therefore, roads could be wet."
+        >>> out = uc.critique(explanation=exp)
+        >>> 'uncertainty' in out
+        True
+    """
+
     def __init__(self):
+        """Initialize the uncertainty critique using a certainty estimator.
+
+        The underlying estimator outputs certainty scores in [1, 6];
+        this class converts them to uncertainty scores by computing (6 - score).
+
+        Examples:
+            >>> UncertaintyCritique()
+        """
         super().__init__(generative_model=None, prompt_dict=None, type="soft")
         self.use_cuda = True if torch.cuda.is_available() else False
         self.estimator = CertaintyEstimator('sentence-level', cuda=self.use_cuda)
 
     def shutdown(self, *args, **kwargs):
+        """Shutdown and release resources if needed.
+
+        Examples:
+            >>> UncertaintyCritique().shutdown()
+        """
         pass
 
     def parse_explanation(self, exp: str) -> dict:
+            """Parse an explanation into steps, assumptions, and summary.
+
+            Args:
+                exp (str): Explanation text with lines such as "Step i:" and "Assumption:".
+
+            Returns:
+                dict: Dictionary with 'steps' (list[str]), 'assumptions' (list[str]), and 'summary' (str).
+
+            Examples:
+                >>> uc = UncertaintyCritique()
+                >>> exp = "Step 1: Assumption: It might rain. Therefore, roads could be wet."
+                >>> out = uc.parse_explanation(exp)
+                >>> set(out.keys()) == {'steps', 'assumptions', 'summary'}
+                True
+            """
             step_pattern = r"(Step \d+:.*?(?=\n))"
             assumption_pattern = r"(Assumption:.*?(?=\n))"
 
@@ -32,9 +73,21 @@ class UncertaintyCritique(CritiqueModel):
 
 
     def calculate_avg_uncertainity(self, texts: list) -> float:
-        """
-        Certainty estimator returns score between 1 and 6, with 6 being the highest certainty.
-        To retrieve uncertainty, we need to subtract the certainty score from the max score 6.
+        """Calculate average uncertainty for a list of texts.
+
+        The underlying estimator returns certainty in [1, 6]. We convert to
+        uncertainty by computing (6 - certainty) for each text, then take the mean.
+
+        Args:
+            texts (list): A list of strings to evaluate.
+
+        Returns:
+            float: Mean uncertainty across all texts.
+
+        Examples:
+            >>> uc = UncertaintyCritique()
+            >>> round(uc.calculate_avg_uncertainity(["I think so."]), 2)  # doctest: +ELLIPSIS
+            ...
         """
         return np.mean([ 6 - score for score in self.estimator.predict(texts)])
 

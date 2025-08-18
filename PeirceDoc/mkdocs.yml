@@ -1,0 +1,26 @@
+site_name: PEIRCE + LMM
+site_description: Documentation for the PEIRCE + LMM pipeline and components.
+site_author: PEIRCE Team
+
+theme: readthedocs
+
+nav:
+  - Home: index.md
+  - API Reference: api.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [".."]  # allow importing project modules when building from PeirceDoc
+          options:
+            docstring_style: google
+            show_source: false
+            show_root_heading: false
+            show_root_toc_entry: false
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - tables
